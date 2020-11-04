@@ -5,31 +5,14 @@
  *      Author: keith
  */
 
-#include "../includes/test.h"
-#include "../includes/constants.h"
-#include "../includes/memorymanager.h"
-#include "../includes/utilities.h"
-#include "../includes/transform1.h"
-#include "../includes/test.h"
-
-//============================================================================
-// Name        : testing.cpp
-// Author      : KP
-// Version     :
-// Copyright   : Your copyright notice
-// Description : tester, for arrayfunctions.cpp
-//				 to autorun on linux, from the parent folder
-//				 ./make clean
-//				 ./make
-//				 ./Debug/Proj3_vector_word_count
-//============================================================================
-
 #include <iostream>
 #include <fstream>
 #include <string>
 #include "../includes/constants.h"
 #include "../includes/utilities.h"
 #include "../includes/memorymanager.h"
+#include "../includes/transform1.h"
+#include "../includes/test.h"
 
 using namespace std;
 const int ONE_POINT=1;
@@ -182,48 +165,6 @@ void test_numb_available_structs(int total_memory){
 	EXPECT_EQ(total_memory/sizeof(data),numb_available_structs(),"24",FIVE_POINT);
 	destroy_list();
 }
-
-//void test_get_and_return_structs(int total_memory){
-//	//make sure you get nothing here
-//	create_list(0);
-//	data* p=get_structs(0);
-//	bool pval=(p==0);
-//	EXPECT_EQ(true,pval,"31",FIVE_POINT);
-//
-//	create_list(total_memory);
-//
-//	//and here as well
-//	p=get_structs(0);
-//	pval=(p==0);
-//	EXPECT_EQ(true,pval,"32",FIVE_POINT);
-//	EXPECT_EQ(12,numb_available_structs(),"33", FIVE_POINT);
-//
-//	//lets get some data
-//	data *p3= get_structs(3);
-//	EXPECT_EQ(9,numb_available_structs(),"34", FIVE_POINT);
-//
-//	data *p9= get_structs(9);
-//	EXPECT_EQ(0,numb_available_structs(),"35", FIVE_POINT);
-//
-//	//try to return empty list
-//	data *pnull = 0;
-//	int ret = return_structs(pnull);
-//	EXPECT_EQ(LIST_IS_EMPTY,ret,"36", FIVE_POINT);
-//
-//	//return 9 of the structs
-//	ret = return_structs(p9);
-//	EXPECT_EQ(SUCCESS,ret,"37", FIVE_POINT);
-//	EXPECT_EQ(9,numb_available_structs(),"38", FIVE_POINT);
-//
-//	//try to return again
-//	ret = return_structs(p9);
-//	EXPECT_EQ(LIST_IS_EMPTY,ret,"39", FIVE_POINT);
-//	EXPECT_EQ(9,numb_available_structs(),"40", FIVE_POINT);
-//
-//	ret = return_structs(p3);
-//	EXPECT_EQ(SUCCESS,ret,"41", FIVE_POINT);
-//	EXPECT_EQ(12,numb_available_structs(),"42", FIVE_POINT);
-//}
 
 //runs all tests, returns the score
 void run_all_tests(char *argv[], int total_memory){
