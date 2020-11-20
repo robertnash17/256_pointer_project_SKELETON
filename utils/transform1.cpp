@@ -6,3 +6,11 @@
  */
 
 //TODO organize includes
+#include "../includes/transform1.h"
+#include "../includes/constants.h"
+using namespace std;
+
+
+bool transform(char *pchar){
+	return toupper(*pchar);
+}

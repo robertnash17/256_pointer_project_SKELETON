@@ -20,11 +20,16 @@ using namespace std;
 int main( int argc, char *argv[] )  {
 
 	//TODO read commandline params
+
 	//expect progname, infile, total_memory, results_file   //program and 3 arguments, argc=4
 	if( argc != EXPECTED_NUMBER_ARGUMENTS ) {
 	   cout<< WRONG_NUMB_ARGS <<endl;
 	   return FAIL_WRONG_NUMBER_ARGS;
 	}
+	string infile = argv[1];
+	string mem = argv[2];
+	string results_file = argv[3];
+
 
 	//TODO get the total memory passed in for use, stoi may come in handy
 	//but its delicate because it expects the string to hold only numbers
