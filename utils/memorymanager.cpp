@@ -29,9 +29,9 @@ data *piter=0;
 int create_list(int total_memory){
 //	if(list_data){
 //		piter=list_data->data *pnext;}
-	if(total_memory > 0){
+//	if(total_memory > 0){
 
-	}
+//	}
 
 	return 0;
 }
