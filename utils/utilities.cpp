@@ -8,6 +8,7 @@
 #include "../includes/utilities.h"
 #include "../includes/constants.h"
 
+
 /**
  * determine how many data structs can fit
  * in the total amount of memory

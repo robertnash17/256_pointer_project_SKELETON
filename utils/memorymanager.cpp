@@ -7,6 +7,8 @@
 
 //TODO organize includes
 #include "../includes/memorymanager.h"
+#include "../includes/utilities.h"
+#include "../includes/constants.h"
 
 /**
  * this will hold the list of structs
