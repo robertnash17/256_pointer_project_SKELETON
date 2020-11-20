@@ -27,13 +27,16 @@ int main( int argc, char *argv[] )  {
 	   return FAIL_WRONG_NUMBER_ARGS;
 	}
 //	string infile = argv[1];
-//	string mem = argv[2];
+//	string total_mem = argv[2];
 //	string results_file = argv[3];
 
+//	cout<<"params passed are: "<<infile << " " <<total_mem<< " " << results_file<<endl;
 
 	//TODO get the total memory passed in for use, stoi may come in handy
 	//but its delicate because it expects the string to hold only numbers
+//	int total_memory = stoi(total_mem);
 	int total_memory;
+
 
 	//test the memorymanager
 	run_all_tests(argv,total_memory);

@@ -6,6 +6,7 @@
  */
 //TODO organize includes
 #include "../includes/utilities.h"
+#include "../includes/constants.h"
 
 /**
  * determine how many data structs can fit
@@ -16,5 +17,5 @@
  * 			or 0 if none will fit (hint use sizeof to determine the size of the struct)
  */
 int how_many_structs_can_fit_in_memory(int total_memory){
-	return 0;
+	return total_memory/sizeof(data);
 }
