@@ -39,6 +39,7 @@ data *pstart=pnext;
  * 		   						     by whether list_data points to null or not.
  */
 int create_list(int total_memory){
+	data *piter=0;
 
 	//add 6 more data structs to the list
 	for(int i=1;i<7;i++){
@@ -49,7 +50,8 @@ int create_list(int total_memory){
 		list_data=(*pnext).p_next;
 	}
 
-	if (list_data != NULL){
+	if (list_data){
+		piter=list_data->p_next;
 		if (total_memory>0){
 			return how_many_structs_can_fit_in_memory(total_memory);
 		}else if (total_memory==0){
