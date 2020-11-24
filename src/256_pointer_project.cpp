@@ -31,7 +31,8 @@ int main( int argc, char *argv[] )  {
 	int total_memory = stoi(argv[2]);
 	string results_file = argv[3];
 
-//	cout<<"params passed are: "<<infile << " " <<total_memory<< " " << results_file<<endl;
+	cout<<create_list(100)<<endl;
+	cout<<"params passed are: "<<infile << " " <<total_memory<< " " << results_file<<endl;
 
 	//TODO get the total memory passed in for use, stoi may come in handy
 	//but its delicate because it expects the string to hold only numbers
