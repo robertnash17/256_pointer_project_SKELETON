@@ -6,20 +6,14 @@
  */
 
 //TODO organize includes
-#include <iostream>
 #include "../includes/memorymanager.h"
 #include "../includes/utilities.h"
-#include "../includes/constants.h"
-using namespace std;
 
 /**
  * this will hold the list of structs
  */
 data *list_data=0;
-
-int num_struct = 1;
-
-
+int num_struct = 0;
 
 /**
  * create a linked list of  structs.
@@ -39,13 +33,22 @@ int create_list(int total_memory){
 	}else if (how_many_structs_can_fit_in_memory(total_memory)==0){
 		return 0;
 	}
+	num_struct++;
 
+	//create first entry in list
+	//pnext used to traverse and add to the list
+	//also to deallocate
 	list_data = new data;
+
+	//pstart will hold a pointer to beginning of list
 	data *piter=list_data;
+
 	//add more data structs to the list
 	for(int i=1;i<how_many_structs_can_fit_in_memory(total_memory);i++){
 		//add another struct to the list
 		(*piter).p_next = new data;
+
+		//set pnext to point to next struct
 		piter=(*piter).p_next;
 		num_struct++;
 	}
@@ -60,7 +63,7 @@ int create_list(int total_memory){
  *         NO_STRUCTS_TO_DEALLOCATE if no memory allocated
  */
 int destroy_list(){
-	if(!list_data){
+	if(num_struct<1){
 		return NO_STRUCTS_TO_DEALLOCATE;
 	}
 	data *pstart = new data;
@@ -91,9 +94,7 @@ int numb_available_structs(){
 	data *point = list_data;
 	while (point != NULL){
 		cnt++;
-		point = point -> p_next;
-	}
-
+		point = point -> p_next;}
 	return cnt;
 }
 
