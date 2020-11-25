@@ -17,14 +17,9 @@ using namespace std;
  */
 data *list_data=0;
 
-data *pnext = new data;
+int num_struct = 1;
 
-//pstart will hold a pointer to beginning of list
-data *pstart=pnext;
-/*data *piter=0;
-data *pnext = new data;
-data *pstart=pnext;
-*/
+
 
 /**
  * create a linked list of  structs.
@@ -39,28 +34,22 @@ data *pstart=pnext;
  * 		   						     by whether list_data points to null or not.
  */
 int create_list(int total_memory){
-	data *piter=0;
-
-	//add 6 more data structs to the list
-	for(int i=1;i<7;i++){
-		//add another struct to the list
-		(*pnext).p_next=new data;
-
-		//set pnext to point to next struct
-		list_data=(*pnext).p_next;
-	}
-
-	if (list_data){
-		piter=list_data->p_next;
-		if (total_memory>0){
-			return how_many_structs_can_fit_in_memory(total_memory);
-		}else if (total_memory==0){
-			return 0;
-		}
-	}else{
+	if (list_data!=NULL){
 		return MEM_ALREADY_ALLOCATED;
+	}else if (how_many_structs_can_fit_in_memory(total_memory)==0){
+		return 0;
 	}
 
+	list_data = new data;
+	data *piter=list_data;
+	//add more data structs to the list
+	for(int i=1;i<how_many_structs_can_fit_in_memory(total_memory);i++){
+		//add another struct to the list
+		(*piter).p_next = new data;
+		piter=(*piter).p_next;
+		num_struct++;
+	}
+	return num_struct;
 }
 
 /**
@@ -71,12 +60,16 @@ int create_list(int total_memory){
  *         NO_STRUCTS_TO_DEALLOCATE if no memory allocated
  */
 int destroy_list(){
-	pnext=pstart;
+	if(!list_data){
+		return NO_STRUCTS_TO_DEALLOCATE;
+	}
+	data *pstart = new data;
+	pstart = list_data;
 
 	//as long as pstart is not null
 	while(pstart){
 		//get a pointer to next data struct in list
-		list_data = (*pstart).p_next;
+		list_data = (*list_data).p_next;
 
 		//delete current data struct
 		delete pstart;
@@ -84,6 +77,7 @@ int destroy_list(){
 		//set pstart  equal to next struct to delete
 		pstart=list_data;
 	}
+	num_struct=0;
 	return SUCCESS;
 }
 
@@ -93,7 +87,14 @@ int destroy_list(){
  * \return number structs available
   */
 int numb_available_structs(){
-	return 0;
+	int cnt = 0;
+	data *point = list_data;
+	while (point != NULL){
+		cnt++;
+		point = point -> p_next;
+	}
+
+	return cnt;
 }
 
 /**
